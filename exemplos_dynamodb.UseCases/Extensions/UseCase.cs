@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace exemplos_dynamodb.UseCases.Extensions
 {
-    public abstract class UseCase<T> : IUseCase<T>
+    public abstract class UseCase<TRequest,TResponse> : IUseCase<TRequest, TResponse>
     {
-        public abstract Task<T> ExecutarAsync();
+        IMapper _mapper { get; }
+
+        protected UseCase(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+        public abstract Task<TResponse> ExecutarAsync(TRequest request);
     }
 }

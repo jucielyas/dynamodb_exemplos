@@ -6,7 +6,6 @@ using exemplos_dynamodb.UseCases.Endereco.Interfaces;
 using exemplos_dynamodb.UseCases.Endereco;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2;
-using Microsoft.Extensions.Configuration;
 using Amazon.Extensions.NETCore.Setup;
 using Amazon.Runtime;
 using exemplos_dynamodb.Models;
@@ -33,6 +32,8 @@ namespace exemplos_dynamodb.Configurations
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 
             services.AddScoped<IObterTodosEnderecosUseCase, ObterTodosEnderecosUseCase>();
+
+            services.AddAutoMapper(typeof(UseCases.MapperProfile.AutoMapper));
         }
     }
 }
