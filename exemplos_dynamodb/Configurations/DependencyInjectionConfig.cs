@@ -9,6 +9,7 @@ using Amazon.DynamoDBv2;
 using Amazon.Extensions.NETCore.Setup;
 using Amazon.Runtime;
 using exemplos_dynamodb.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace exemplos_dynamodb.Configurations
 {
@@ -34,6 +35,7 @@ namespace exemplos_dynamodb.Configurations
             services.AddScoped<IObterTodosEnderecosUseCase, ObterTodosEnderecosUseCase>();
 
             services.AddAutoMapper(typeof(UseCases.MapperProfile.AutoMapper));
+
         }
     }
 }

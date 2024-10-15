@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace exemplos_dynamodb.UseCases.Endereco.Interfaces
 {
-    public interface IObterTodosEnderecosUseCase : IUseCase<List<EnderecoViewModel>>
+    public interface IObterTodosEnderecosUseCase : IUseCase<string,List<EnderecoViewModel>>
     {
     }
 }

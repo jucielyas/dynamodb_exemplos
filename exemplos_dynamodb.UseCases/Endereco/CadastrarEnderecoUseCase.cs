@@ -8,6 +8,7 @@ using exemplos_dynamodb.UseCases.Endereco.Interfaces;
 using System;
 using System.Threading.Tasks;
 using exemplos_dynamodb.UseCases.Extensions;
+using exemplos_dynamodb.UseCases.Endereco.Validators;
 
 namespace exemplos_dynamodb.UseCases
 {
@@ -15,14 +16,14 @@ namespace exemplos_dynamodb.UseCases
     {
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IMapper _mapper;
-        private readonly IValidator<EnderecoViewModel> _validator;
+        private readonly CadastrarEnderecoUseCaseValidator _validator;
 
-        public CadastrarEnderecoUseCase(IEnderecoRepository enderecoRepository, IMapper mapper, IValidator<EnderecoViewModel> validator)
+        public CadastrarEnderecoUseCase(IEnderecoRepository enderecoRepository, IMapper mapper)
             : base(mapper)
         {
             _enderecoRepository = enderecoRepository;
             _mapper = mapper;
-            _validator = validator;
+            _validator = new CadastrarEnderecoUseCaseValidator();
         }
 
         public override async Task<bool> ExecutarAsync(EnderecoViewModel enderecoViewModel)

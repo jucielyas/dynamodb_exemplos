@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace exemplos_dynamodb.UseCases.Endereco
 {
-    public class ObterTodosEnderecosUseCase : UseCase<List<EnderecoViewModel>>, IObterTodosEnderecosUseCase
+    public class ObterTodosEnderecosUseCase : UseCase<string,List<EnderecoViewModel>>, IObterTodosEnderecosUseCase
     {
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace exemplos_dynamodb.UseCases.Endereco
             _mapper = mapper;
         }
 
-        public override async Task<List<EnderecoViewModel>> ExecutarAsync()
+        public override async Task<List<EnderecoViewModel>> ExecutarAsync(string request)
         {
             var enderecos = await _enderecoRepository.BuscarTodosEnderecosAsync();
             var result = _mapper.Map<List<EnderecoViewModel>>(enderecos);
